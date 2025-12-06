@@ -1,29 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submarine Wars</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Submarine Wars - PRO SÜRÜM</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="menu">
-        <h1>Submarine Wars</h1>
-        <input type="text" id="nickname" placeholder="Nickname">
-        <button id="startBtn">Başla</button>
-        <select id="language">
-            <option value="en">English</option>
-            <option value="tr">Türkçe</option>
-        </select>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="uiLayer">
+        <div class="bars">
+            <div class="bar-box">
+                <span style="color:#e74c3c">CAN</span>
+                <div class="progress-bg"><div id="hpBar" style="width: 100%; background: #e74c3c;"></div></div>
+            </div>
+            <div class="bar-box">
+                <span style="color:#3498db">OKSİJEN</span>
+                <div class="progress-bg"><div id="oxBar" style="width: 100%; background: #3498db;"></div></div>
+            </div>
+        </div>
+        <div class="stats">
+            <div>SKOR: <span id="scoreVal">0</span></div>
+            <div id="torpStatus" style="color: lime;">TORPİDO HAZIR</div>
+        </div>
+        <div id="mobileControls">
+            <div id="touchArea"></div>
+            <button id="btnFire">ATEŞ</button>
+            <button id="btnTorp">TORP</button>
+        </div>
     </div>
 
-    <canvas id="gameCanvas" width="800" height="600"></canvas>
-
-    <div id="deathScreen">
-        <h2>Öldün!</h2>
-        <button id="retryBtn">Tekrar Oyna</button>
+    <div id="menuScreen">
+        <h1 class="neon-text">SUBMARINE WARS</h1>
+        <p style="color:#aaa">Kamera Takipli & Açık Dünya</p>
+        <input type="text" id="nickInput" placeholder="KAPTAN ADI" value="Kaptan">
+        <button id="startBtn">DALIŞA GEÇ</button>
+        <div class="controls">
+            <p>WASD / OKLAR : Hareket</p>
+            <p>SOL TIK : Mermi | SAĞ TIK : Torpido</p>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <div id="deathScreen" class="hidden">
+        <h1 style="color:red">BATTIK!</h1>
+        <button id="restartBtn">YENİ DENİZALTI İSTE</button>
+    </div>
+
+    <script src="game.js"></script>
 </body>
 </html>
