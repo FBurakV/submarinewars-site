@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    font-family: monospace;
+    background: #030303;
+    color: #00ffea;
+    text-align: center;
+}
+
+.title {
+    font-size: 48px;
+    margin-top: 20px;
+    text-shadow: 0 0 10px #00ffe5;
+}
+
+nav {
+    margin-top: 20px;
+}
+
+nav a {
+    margin: 0 15px;
+    color: #00c8ff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+nav a:hover {
+    text-shadow: 0 0 10px #00aaff;
+}
+
+.section {
+    padding: 50px 20px;
+}
+
+/* CRT effect */
+.scanlines {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 255, 255, 0.1),
+        rgba(0, 255, 255, 0.1) 2px,
+        transparent 3px,
+        transparent 4px
+    );
+    z-index: 999;
+}
