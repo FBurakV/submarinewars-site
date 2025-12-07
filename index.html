@@ -3,51 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Submarine Wars - PRO SÜRÜM</title>
+    <title>Submarine Wars: ULTIMATE</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <canvas id="gameCanvas"></canvas>
+    <div class="overlay vignette"></div>
+    <div class="overlay noise"></div>
+    <div id="damageOverlay"></div> <div id="menuScreen">
+        <div class="menu-content">
+            <h1 class="game-title">DEEP WARS</h1>
+            <p class="subtitle">AÇIK DÜNYA & HAYATTA KALMA</p>
+            
+            <div class="ship-selector">
+                <div class="ship-card selected" onclick="selectShip('balanced')">
+                    <div class="preview p-balanced"></div>
+                    <h3>SAVAŞÇI</h3>
+                    <small>Dengeli</small>
+                </div>
+                <div class="ship-card" onclick="selectShip('scout')">
+                    <div class="preview p-scout"></div>
+                    <h3>KAŞİF</h3>
+                    <small>Hızlı & Zayıf</small>
+                </div>
+                <div class="ship-card" onclick="selectShip('heavy')">
+                    <div class="preview p-heavy"></div>
+                    <h3>ZIRHLI</h3>
+                    <small>Yavaş & Tank</small>
+                </div>
+            </div>
 
-    <div id="uiLayer">
-        <div class="bars">
-            <div class="bar-box">
-                <span style="color:#e74c3c">CAN</span>
-                <div class="progress-bg"><div id="hpBar" style="width: 100%; background: #e74c3c;"></div></div>
-            </div>
-            <div class="bar-box">
-                <span style="color:#3498db">OKSİJEN</span>
-                <div class="progress-bg"><div id="oxBar" style="width: 100%; background: #3498db;"></div></div>
-            </div>
-        </div>
-        <div class="stats">
-            <div>SKOR: <span id="scoreVal">0</span></div>
-            <div id="torpStatus" style="color: lime;">TORPİDO HAZIR</div>
-        </div>
-        <div id="mobileControls">
-            <div id="touchArea"></div>
-            <button id="btnFire">ATEŞ</button>
-            <button id="btnTorp">TORP</button>
+            <input type="text" id="nickInput" placeholder="KAPTAN ADI" maxlength="15">
+            <button id="startBtn" class="neon-btn">DALIŞA BAŞLA</button>
         </div>
     </div>
 
-    <div id="menuScreen">
-        <h1 class="neon-text">SUBMARINE WARS</h1>
-        <p style="color:#aaa">Kamera Takipli & Açık Dünya</p>
-        <input type="text" id="nickInput" placeholder="KAPTAN ADI" value="Kaptan">
-        <button id="startBtn">DALIŞA GEÇ</button>
-        <div class="controls">
-            <p>WASD / OKLAR : Hareket</p>
-            <p>SOL TIK : Mermi | SAĞ TIK : Torpido</p>
+    <div id="gameUI" class="hidden">
+        <div class="hud-top">
+            <div class="bar-group">
+                <span class="label">GÖVDE</span>
+                <div class="bar-container"><div id="hpBar"></div></div>
+            </div>
+            <div class="bar-group">
+                <span class="label">O2</span>
+                <div class="bar-container"><div id="oxBar"></div></div>
+            </div>
+            <div class="stats">
+                <div>SKOR: <span id="scoreVal">0</span></div>
+                <div>DERİNLİK: <span id="depthVal">0</span>m</div>
+            </div>
+        </div>
+
+        <div id="bossWarning" class="hidden">
+            ⚠️ KRAKEN TESPİT EDİLDİ ⚠️
+        </div>
+
+        <div id="mobileControls">
+            <div id="dpad">
+                <div class="d-btn up" data-key="w">▲</div>
+                <div class="d-btn left" data-key="a">◀</div>
+                <div class="d-btn right" data-key="d">▶</div>
+                <div class="d-btn down" data-key="s">▼</div>
+            </div>
+            <div class="action-buttons">
+                <button id="btnFire" class="act-btn">ATEŞ</button>
+                <button id="btnTorp" class="act-btn red">TORP</button>
+            </div>
         </div>
     </div>
 
     <div id="deathScreen" class="hidden">
-        <h1 style="color:red">BATTIK!</h1>
-        <button id="restartBtn">YENİ DENİZALTI İSTE</button>
+        <h2 style="color: #ff3333; font-size: 50px;">MÜRETTEBAT KAYBEDİLDİ</h2>
+        <p>SON SKOR: <span id="finalScore">0</span></p>
+        <button id="restartBtn" class="neon-btn">YENİDEN DENE</button>
     </div>
 
+    <canvas id="gameCanvas"></canvas>
     <script src="game.js"></script>
 </body>
 </html>
